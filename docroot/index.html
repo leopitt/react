@@ -10,13 +10,27 @@
 
   <style>
     #container {
-      padding: 50px;
       background-color: #EEE;
+      padding: 50px;
     }
     #container h1 {
+      color: #0080a8;
+      font-family: sans-serif;
       font-size: 144px;
-    font-family: sans-serif;
-     color: #0080a8;
+    }
+    #container .button {
+      background-color: transparent;
+      border-color: #0080a8;
+      border-width: 5px;
+      color: #0080a0;
+      font-family: sans-serif;
+      font-size: 24px;
+      margin: 10px;
+      padding: 10px;
+    }
+    #container .button:hover {
+      background-color: white;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -26,20 +40,27 @@
   <script type="text/babel">
     var destination = document.querySelector("#container");
 
-    class HelloWorld extends React.Component {
+    class Buttonify extends React.Component {
       render() {
-        return <p>Hello, {this.props.greetTarget}!</p>;
+        return (
+          <div class="buttonify">
+            <button class="button" type={this.props.behavior}>{this.props.children}</button>
+          </div>
+        );
       }
     }
 
     ReactDOM.render(
       <div>
-        <HelloWorld greetTarget="Batman" />
-        <HelloWorld greetTarget="Superman" />
-        <HelloWorld greetTarget="Wonderwoman" />
-        <HelloWorld greetTarget="Flash" />
-        <HelloWorld greetTarget="Slash" />
-        <HelloWorld greetTarget="Hulk" />
+        <Buttonify behavior="submit">
+          This is a button.
+        </Buttonify>
+        <Buttonify behavior="submit">
+          This be another button.
+        </Buttonify>
+        <Buttonify behavior="cancel">
+          Guess what - button.
+        </Buttonify>
       </div>,
       destination
     );
