@@ -26,11 +26,24 @@
   <script type="text/babel">
     var destination = document.querySelector("#container");
 
-    ReactDOM.render(React.createElement(
-      "h1",
-      null,
-      "Hello World"
-    ), destination);
+    class HelloWorld extends React.Component {
+      render() {
+        return <p>Hello, {this.props.greetTarget}!</p>;
+      }
+    }
+
+    ReactDOM.render(
+      <div>
+        <HelloWorld greetTarget="Batman" />
+        <HelloWorld greetTarget="Superman" />
+        <HelloWorld greetTarget="Wonderwoman" />
+        <HelloWorld greetTarget="Flash" />
+        <HelloWorld greetTarget="Slash" />
+        <HelloWorld greetTarget="Hulk" />
+      </div>,
+      destination
+    );
+
   </script>
 </body>
 
