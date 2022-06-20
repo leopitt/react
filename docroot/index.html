@@ -28,10 +28,6 @@
       margin: 10px;
       padding: 10px;
     }
-    #container .button:hover {
-      background-color: white;
-      cursor: pointer;
-    }
   </style>
 </head>
 
@@ -42,10 +38,18 @@
 
     class Buttonify extends React.Component {
       render() {
+        var buttonifyStyle = {
+          padding: 10,
+          margin: 10,
+          backgroundColor: "#ffde00",
+          color: "#333",
+          display: "inline-block",
+          fontFamily: "monospace",
+          fontSize: 32,
+          textAlign: "center"
+        };
         return (
-          <div class="buttonify">
-            <button class="button" type={this.props.behavior}>{this.props.children}</button>
-          </div>
+          <button style={buttonifyStyle} type={this.props.behavior}>{this.props.children}</button>
         );
       }
     }
