@@ -6,7 +6,7 @@
     <title>React</title>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
         #container {
@@ -58,12 +58,13 @@
                 backgroundColor: this.props.color,
             };
             return (
-                <div style={style}>{this.props.children}</div>
+                <div style={style} title={this.props.color}>{this.props.children}</div>
             );
         }
     }
 
     class Card extends React.Component {
+        // Component.
         render() {
             var style = {
                 height: 200,
@@ -76,10 +77,15 @@
                 filter: 'drop-shadow(0px 0px 5px #aaa)',
             };
             return (
-                <div style={style}>
-                    <CardSquare color={this.props.color} />
-                    <CardLabel color={this.props.color} />
-                </div>
+                <>
+                    {/* I am a child comment */}
+                    <div style={style} /* Whatever */>
+                        <CardSquare {...this.props} />
+                        <CardLabel {...this.props} />
+                    </div>
+                    <p>Hello</p>
+                    <p>Again</p>
+                </>
             );
         }
     }
