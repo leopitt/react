@@ -9,10 +9,16 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+
         #container {
             background-color: #fff;
             padding: 0;
             margin: 0;
+            line-height: 0;
         }
     </style>
 </head>
@@ -20,32 +26,31 @@
 <body>
 <div id="container"></div>
 <script type="text/babel">
-    class Circle extends React.Component {
+    class ColourItem extends React.Component {
         render() {
             var circleWidth = 10;
-            var marginSize = 2;
-            var circleStyle = {
+            var marginSize = 0;
+            var style = {
                 margin: marginSize,
                 display: "inline-block",
                 backgroundColor: this.props.bgColor,
-                borderRadius: "50%",
                 width: circleWidth,
                 height: circleWidth
             };
 
             return (
-                <div style={circleStyle}>
+                <div style={style}>
                 </div>
             );
         }
     }
 
-    var numColors = 6000;
+    var numColors = 18000;
     var renderData = [];
 
     for (var i = 0; i < numColors; i++) {
         var randomColor = Math.floor(Math.random() * 16777215).toString(16);
-        renderData.push(<Circle key={'i' + randomColor} bgColor={'#' + randomColor} />);
+        renderData.push(<ColourItem key={'i' + randomColor} bgColor={'#' + randomColor} />);
     }
 
     ReactDOM.render(
