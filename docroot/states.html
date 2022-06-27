@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>React</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        #container {
+            background-color: #EEE;
+            padding: 50px;
+        }
+        #container h1 {
+            color: #0080a8;
+            font-family: sans-serif;
+            font-size: 144px;
+        }
+        #container .button {
+            background-color: transparent;
+            border-color: #0080a8;
+            border-width: 5px;
+            color: #0080a0;
+            font-family: sans-serif;
+            font-size: 24px;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container"></div>
+<script type="text/babel">
+    var destination = document.querySelector("#container");
+
+    class LightningCounter extends React.Component {
+        constructor(props, context) {
+            super(props, context);
+
+            this.state = {
+                strikes: 0
+            };
+
+            this.timerTick = this.timerTick.bind(this);
+        }
+
+        timerTick() {
+            this.setState({
+                strikes: this.state.strikes + 100
+            });
+        }
+
+        componentDidMount() {
+            setInterval(this.timerTick, 1000);
+        }
+
+        render() {
+            var style = {
+                fontSize: "2rem",
+            };
+
+            return (
+                <h1 style={style}>{this.state.strikes}</h1>
+            );
+        }
+    }
+
+    class LightningCounterDisplay extends React.Component {
+        render() {
+            var divStyle = {
+                width: 250,
+                textAlign: "center",
+                backgroundColor: "black",
+                padding: 40,
+                fontFamily: "sans-serif",
+                color: "#999",
+                borderRadius: 10
+            };
+
+            return (
+                <div style={ divStyle }>
+                    <LightningCounter/>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <LightningCounterDisplay/>,
+        destination
+    );
+
+</script>
+</body>
+
+</html>
